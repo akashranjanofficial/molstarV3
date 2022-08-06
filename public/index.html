@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>PDB DB IIIT HYDERABAD</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #app {
+        position: absolute;
+        left: 300px;
+        top: 150px;
+        width: 500px;
+        height: 500px;
+        border: 2px solid #ccc;
+      }
+
+      #controls {
+        position: relative;
+        width: 200px;
+        top: 50px;
+        left: 40px;
+      }
+
+      #controls > button {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+
+      #controls > hr {
+        margin: 5px 0;
+      }
+
+      #controls > input,
+      #controls > select {
+        width: 100%;
+        display: block;
+      }
+    </style>
+    <script src="get.js"></script>
+  </head>
+  <body style="text-align: center;">
+    <div>
+      <h1 style="color: black;">
+        IIIT HYDERABAD
+      </h1>
+
+      <h2>
+        WELCOME TO PDB DATABSE
+      </h2>
+
+      <p id="p">ENTER 4 CHARACTER PDB ID</p>
+    </div>
+    <input type="text" id="pdbid" placeholder="Enter PDBID" />
+    <button onclick="geek()">generate link</button>
+    <script>
+      function geek() {
+        const str = document.getElementById("pdbid").value;
+        const link = "https://files.rcsb.org/download/" + str + ".pdb";
+        document.getElementById("p").innerHTML = link;
+        console.log(link);
+        sessionStorage.setItem("link", link);
+        return link;
+      }
+    </script>
+    <div id="controls">
+      <h3>PASTE THE GENERATED LINK BELOW</h3>
+      <input type="text" id="url" placeholder="url" />
+      <!-- <input type="text" id="pdbid" placeholder="pdbid" onclick="getlink()" /> -->
+
+      <input type="text" id="assemblyId" placeholder="assembly id" />
+      <h3>Select the format of the id : pdb or mmCIF</h3>
+      <select id="format">
+        <option value="pdb" selected>PDB</option>
+        <option value="mmcif">mmCIF</option>
+      </select>
+      <h3>click on Load Asym Unit or Load assembly</h3>
+    </div>
+    <div id="app"></div>
+  </body>
+</html>
